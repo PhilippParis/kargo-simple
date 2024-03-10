@@ -36,7 +36,7 @@ docker buildx imagetools create \
 
 You will now have a `guestbook` container image repository. e.g.:
 
-https://github.com/yourgithubusername/guestbook/pkgs/container/guestbook
+https://github.com/PhilippParis/guestbook/pkgs/container/guestbook
 
 5. Change guestbook container image repository to public.
 
