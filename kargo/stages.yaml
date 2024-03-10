@@ -14,7 +14,7 @@ spec:
       writeBranch: main
       kustomize:
         images:
-        - image: ghcr.io/PhilippParis/guestbook
+        - image: ghcr.io/philippparis/guestbook
           path: env/dev
 
 ---
@@ -35,7 +35,7 @@ spec:
       writeBranch: main
       kustomize:
         images:
-        - image: ghcr.io/PhilippParis/guestbook
+        - image: ghcr.io/philippparis/guestbook
           path: env/staging
 
 ---
@@ -56,6 +56,6 @@ spec:
       writeBranch: main
       kustomize:
         images:
-        - image: ghcr.io/PhilippParis/guestbook
+        - image: ghcr.io/philippparis/guestbook
           path: env/prod
       pullRequest: {}
