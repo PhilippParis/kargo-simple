@@ -12,16 +12,18 @@ spec:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: main
-      kustomize:
+      helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          path: env/dev
+          key: tag
+          value: Tag
+          valuesFilePath: env/dev/values-dev.yaml
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: staging
+  name: test
   namespace: kargo-simple
   annotations:
     kargo.akuity.io/color: amber
@@ -33,10 +35,12 @@ spec:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: main
-      kustomize:
+      helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          path: env/staging
+          key: tag
+          value: Tag
+          valuesFilePath: env/test/values-test.yaml
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
@@ -49,13 +53,14 @@ metadata:
 spec:
   subscriptions:
     upstreamStages:
-      - name: staging
+      - name: test
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: main
-      kustomize:
+      helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          path: env/prod
-      pullRequest: {}
+          key: tag
+          value: Tag
+          valuesFilePath: env/prod/values-prod.yaml
