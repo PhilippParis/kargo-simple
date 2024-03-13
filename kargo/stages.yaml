@@ -15,7 +15,7 @@ spec:
       helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          key: tag
+          key: image.tag
           value: Tag
           valuesFilePath: env/dev/values-dev.yaml
 
@@ -38,7 +38,7 @@ spec:
       helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          key: tag
+          key: image.tag
           value: Tag
           valuesFilePath: env/test/values-test.yaml
 
@@ -61,6 +61,6 @@ spec:
       helm:
         images:
         - image: ghcr.io/philippparis/guestbook
-          key: tag
+          key: image.tag
           value: Tag
           valuesFilePath: env/prod/values-prod.yaml
