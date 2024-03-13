@@ -1,5 +1,6 @@
 # Kargo Simple Example
 
+
 This is a GitOps repository of a simple Kargo example for getting started.
 
 ### Features:
