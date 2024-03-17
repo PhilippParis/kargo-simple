@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helm-guestbook
+    chart: helm-guestbook-0.1.0
+    heritage: Helm
+    release: guestbook
+  name: guestbook-helm-guestbook
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: helm-guestbook
+      release: guestbook
+  template:
+    metadata:
+      labels:
+        app: helm-guestbook
+        release: guestbook
+    spec:
+      containers:
+      - env:
+        - name: FOO
+          value: dev
+        image: gcr.io/heptio-images/ks-guestbook-demo:v0.0.4
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        name: helm-guestbook
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources: {}
