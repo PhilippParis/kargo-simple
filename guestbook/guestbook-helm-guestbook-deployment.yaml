@@ -24,7 +24,7 @@ spec:
       - env:
         - name: FOO
           value: dev
-        image: gcr.io/heptio-images/ks-guestbook-demo:v0.0.4
+        image: ghcr.io/philippparis/guestbook:v0.0.5
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
