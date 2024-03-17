@@ -12,7 +12,7 @@ spec:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: env/dev
-      pullRequest: {}
+      pullRequest: {} # not supported for 'render'!
       render: {}
       #helm:
       #  images:
@@ -37,7 +37,7 @@ spec:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: env/test
-      pullRequest: {}
+      pullRequest: {} # not supported for 'render'!
       render: {}
       #helm:
       #  images:
@@ -62,7 +62,7 @@ spec:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
       writeBranch: env/prod
-      pullRequest: {}
+      pullRequest: {} # not supported for 'render'!
       render: {}
       #helm:
       #  images:
