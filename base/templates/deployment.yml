@@ -39,6 +39,8 @@ spec:
           env: 
           - name: FOO
             value: {{ .Values.env.foo }}
+          - name: BAR
+            value: bar
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
