@@ -1,0 +1,13 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: guestbook
+  namespace: kargo-simple
+spec:
+  subscriptions:
+  - image:
+      repoURL: ghcr.io/philippparis/guestbook
+      tagSelectionStrategy: SemVer
+  - git:
+      repoURL: https://github.com/PhilippParis/kargo-simple.git
+      branch: main
