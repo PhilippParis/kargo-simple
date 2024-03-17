@@ -11,13 +11,15 @@ spec:
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
-      writeBranch: main
-      helm:
-        images:
-        - image: ghcr.io/philippparis/guestbook
-          key: image.tag
-          value: Tag
-          valuesFilePath: env/dev/values-dev.yaml
+      writeBranch: env/dev
+      pullRequest: {}
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-dev.yaml
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
@@ -34,13 +36,15 @@ spec:
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
-      writeBranch: main
-      helm:
-        images:
-        - image: ghcr.io/philippparis/guestbook
-          key: image.tag
-          value: Tag
-          valuesFilePath: env/test/values-test.yaml
+      writeBranch: env/test
+      pullRequest: {}
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-test.yaml
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
@@ -57,10 +61,12 @@ spec:
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
-      writeBranch: main
-      helm:
-        images:
-        - image: ghcr.io/philippparis/guestbook
-          key: image.tag
-          value: Tag
-          valuesFilePath: env/prod/values-prod.yaml
+      writeBranch: env/prod
+      pullRequest: {}
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-prod.yaml

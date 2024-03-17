@@ -89,9 +89,7 @@ To promote, click the target icon to the left of the `dev` Stage, select the det
 To simulate a release, simply retag an image with a newer semantic version. e.g.:
 
 ```
-docker buildx imagetools create \
-    ghcr.io/akuity/guestbook:latest \
-    -t ghcr.io/<yourgithubusername>/guestbook:v0.0.2
+docker buildx imagetools create ghcr.io/akuity/guestbook:latest -t ghcr.io/philippparis/guestbook:v0.0.2
 ```
 
 Then refresh the Warehouse in the UI to detect the new Freight.

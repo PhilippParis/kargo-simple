@@ -1,0 +1,13 @@
+configVersion: v1alpha1
+branchConfigs:
+- pattern: env/(\w+)
+  appConfigs:
+    guestbook:
+      configManagement:
+        path: base/
+        helm:
+          releaseName: guestbook
+          namespace: guestbook
+          valueFiles:
+          - values-${1}.yaml
+      outputPath: guestbook

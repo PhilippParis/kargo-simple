@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/heptio-images/ks-guestbook-demo
-  tag: ~
+  repository: ghcr.io/philippparis/guestbook
+  tag: v0.0.4
   pullPolicy: IfNotPresent
 
 containerPort: 80
@@ -27,6 +27,9 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+env:
+  foo: base
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
