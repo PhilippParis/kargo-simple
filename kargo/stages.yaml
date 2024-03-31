@@ -21,11 +21,12 @@ spec:
       #    value: Tag
       #    valuesFilePath: values-dev.yaml
 
+
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: test
+  name: test1
   namespace: kargo-simple
   annotations:
     kargo.akuity.io/color: amber
@@ -36,7 +37,7 @@ spec:
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
-      writeBranch: env/test
+      writeBranch: env/test/t1
       pullRequest: {} # not supported for 'render'!
       render: {}
       #helm:
@@ -50,18 +51,121 @@ spec:
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: prod
+  name: test2
+  namespace: kargo-simple
+  annotations:
+    kargo.akuity.io/color: amber
+spec:
+  subscriptions:
+    upstreamStages:
+      - name: dev
+  promotionMechanisms:
+    gitRepoUpdates:
+    - repoURL: https://github.com/PhilippParis/kargo-simple.git
+      writeBranch: env/test/t2
+      pullRequest: {} # not supported for 'render'!
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-test.yaml
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: test3
+  namespace: kargo-simple
+  annotations:
+    kargo.akuity.io/color: amber
+spec:
+  subscriptions:
+    upstreamStages:
+      - name: dev
+  promotionMechanisms:
+    gitRepoUpdates:
+    - repoURL: https://github.com/PhilippParis/kargo-simple.git
+      writeBranch: env/test/t3
+      pullRequest: {} # not supported for 'render'!
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-test.yaml
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: preprod
+  namespace: kargo-simple
+  annotations:
+    kargo.akuity.io/color: blue
+spec:
+  subscriptions:
+    upstreamStages:
+      - name: test1
+      - name: test2
+      - name: test3
+  promotionMechanisms:
+    gitRepoUpdates:
+    - repoURL: https://github.com/PhilippParis/kargo-simple.git
+      writeBranch: env/preprod
+      pullRequest: {} # not supported for 'render'!
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-prod.yaml
+
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod1
   namespace: kargo-simple
   annotations:
     kargo.akuity.io/color: violet
 spec:
   subscriptions:
     upstreamStages:
-      - name: test
+      - name: preprod
   promotionMechanisms:
     gitRepoUpdates:
     - repoURL: https://github.com/PhilippParis/kargo-simple.git
-      writeBranch: env/prod
+      writeBranch: env/prod/p1
+      pullRequest: {} # not supported for 'render'!
+      render: {}
+      #helm:
+      #  images:
+      #  - image: ghcr.io/philippparis/guestbook
+      #    key: image.tag
+      #    value: Tag
+      #    valuesFilePath: values-prod.yaml
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prod2
+  namespace: kargo-simple
+  annotations:
+    kargo.akuity.io/color: violet
+spec:
+  subscriptions:
+    upstreamStages:
+      - name: preprod
+  promotionMechanisms:
+    gitRepoUpdates:
+    - repoURL: https://github.com/PhilippParis/kargo-simple.git
+      writeBranch: env/prod/p2
       pullRequest: {} # not supported for 'render'!
       render: {}
       #helm:
