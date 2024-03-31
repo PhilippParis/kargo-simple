@@ -26,7 +26,7 @@ spec:
           value: test3
         - name: BAR
           value: bar
-        image: ghcr.io/philippparis/guestbook:v0.0.8
+        image: ghcr.io/philippparis/guestbook:v0.0.9-stable
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
